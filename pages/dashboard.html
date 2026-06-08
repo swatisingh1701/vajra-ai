@@ -4,32 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vajra AI Dashboard</title>
-    <link rel="stylesheet" href="../css/dashboard.css">
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div class="container">
 
-        <!-- Sidebar -->
+<div class="container">
 
-        <div class="sidebar">
-            <h2>⚡ Vajra AI</h2>
-            <a href="#">Dashboard</a>
-            <a href="#">Phishing Detector</a>
-            <a href="#">URL Scanner</a>
-            <a href="#">Password Checker</a>
-            <a href="#">Cyber Assistant</a>
-            <a href="#">History</a>
+    <!-- Sidebar -->
+    <div class="sidebar">
 
-            <button class="logout">Logout</button>
+        <h2>⚡ Vajra AI</h2>
+
+        <a href="#"><i class="fa-solid fa-house"></i> Dashboard</a>
+
+        <a href="#"><i class="fa-solid fa-shield"></i> Phishing Detector</a>
+
+        <a href="#"><i class="fa-solid fa-link"></i> URL Scanner</a>
+
+        <a href="#"><i class="fa-solid fa-lock"></i> Password Checker</a>
+
+        <a href="#"><i class="fa-solid fa-robot"></i> Cyber Assistant</a>
+
+        <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+
+        <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+
+    </div>
+
+
+    <!-- Main Area -->
+    <div class="main">
+
+        <!-- Navbar -->
+        <div class="top-bar">
+
+            <input type="text"
+            placeholder="Search threats, scans...">
+
+            <div class="profile">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <div class="avatar">
+                    SS
+                </div>
+
+            </div>
+
         </div>
 
-        <!-- Main  -->
-         <div class="main">
-            <h1>Welcome Back 👋</h1>
-            <p>Detect. Defend. Dominate.</p>
-         </div>
+
+        <!-- Welcome -->
+        <div class="welcome">
+
+            <h1>Good Evening, Swati 👋</h1>
+
+            <p>
+                Strike First. Stay Secure.
+            </p>
+
+        </div>
+
+
+        <!-- Stats Cards -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Scans</h3>
+                <p>128</p>
+            </div>
+
+            <div class="card">
+                <h3>Threats Blocked</h3>
+                <p>23</p>
+            </div>
+
+            <div class="card">
+                <h3>Security Score</h3>
+                <p>92%</p>
+            </div>
+
+            <div class="card">
+                <h3>Safe Activities</h3>
+                <p>105</p>
+            </div>
+
+        </div>
+
+
+        <!-- Quick Actions -->
+        <div class="section-title">
+            Quick Actions
+        </div>
+
+        <div class="quick-actions">
+
+            <div class="action-card">
+                <h3>🛡 Phishing Detector</h3>
+                <p>Analyze suspicious emails and messages.</p>
+            </div>
+
+            <div class="action-card">
+                <h3>🌐 URL Scanner</h3>
+                <p>Check whether links are safe.</p>
+            </div>
+
+            <div class="action-card">
+                <h3>🔒 Password Checker</h3>
+                <p>Evaluate password strength instantly.</p>
+            </div>
+
+            <div class="action-card">
+                <h3>🤖 Cyber Assistant</h3>
+                <p>Ask cybersecurity questions.</p>
+            </div>
+
+        </div>
+
+
+        <!-- Recent Activity -->
+        <div class="section-title">
+            Recent Activity
+        </div>
+
+        <div class="section-title">
+            Scan Analytics
+        </div>
+
+        <div class="chart-box">
+            <canvas id="scanChart"></canvas>
+        </div>
+
+        <div class="activity">
+
+            <div class="activity-item">
+                ✅ Gmail Scam Detected
+            </div>
+
+            <div class="activity-item">
+                🔒 Password Analysis Completed
+            </div>
+
+            <div class="activity-item">
+                🌐 URL Scan Completed
+            </div>
+
+        </div>
+
     </div>
-    
+
+</div>
+
+<script src="../js/dashboard.js"></script>
+
 </body>
 </html>
