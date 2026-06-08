@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0f1a;
+  color: white;
+}
+
+/* Layout */
+.container {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #111827;
+  height: 100vh;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #7c3aed;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  margin: 5px 0;
+  border-radius: 8px;
+}
+
+.sidebar a:hover {
+  background: #1f2937;
+}
+
+.logout {
+  margin-top: 20px;
+  background: red;
+  border: none;
+  padding: 10px;
+  color: white;
+  width: 100%;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.card {
+  background: #111827;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Chart */
+.chart-box {
+  margin-top: 30px;
+  background: #111827;
+  padding: 20px;
+  border-radius: 12px;
+}
