@@ -15,3 +15,18 @@ new Chart(ctx, {
         responsive: true
     }
 });
+
+const userName = localStorage.getItem("userName");
+
+if(userName){
+
+    document.getElementById("welcomeText").innerHTML =
+    `Good Evening, ${userName} 👋`;
+
+}
+else{
+
+    document.getElementById("welcomeText").innerHTML =
+    "Good Evening, Guardian 👋";
+
+}

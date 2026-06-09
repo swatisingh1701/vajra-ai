@@ -37,3 +37,16 @@ tabs.forEach(tab => {
     });
 
 });
+
+const loginForm = document.getElementById("login-form");
+
+loginForm.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    // temporary user name
+    localStorage.setItem("userName", "Swati");
+
+    window.location.href = "dashboard.html";
+
+});
