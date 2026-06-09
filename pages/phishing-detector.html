@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detector | Vajra AI</title>
+
+    <link rel="stylesheet" href="../css/phishing-detector.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="phishing-card">
+
+        <!-- Header -->
+        <div class="header">
+
+            <h1>🛡️ Phishing Detector</h1>
+
+            <p>
+                Trust less.<br>
+                Verify everything.
+            </p>
+
+        </div>
+
+        <!-- Text Area -->
+        <div class="input-section">
+
+            <textarea id="messageInput" placeholder="Paste suspicious emails, SMS messages, or chat conversations here..."></textarea>
+
+        </div>
+
+        <!-- Button -->
+        <button id="analyzeBtn">
+
+            Analyze Threat
+
+        </button>
+
+
+        <!-- Result Box -->
+        <div class="result-card">
+
+            <h2>Threat Analysis</h2>
+
+            <div id="threatLevel">
+
+                Awaiting analysis...
+
+            </div>
+
+        </div>
+
+
+        <!-- Suspicious Indicators -->
+        <div class="indicators">
+
+            <h3>Detected Indicators</h3>
+
+            <div id="indicatorList">
+
+                No indicators detected yet.
+
+            </div>
+
+        </div>
+
+
+        <!-- Recommendation -->
+        <div class="recommendation">
+
+            <h3>Security Recommendation</h3>
+
+            <div id="recommendationText">
+
+                Paste a message and begin analysis.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../js/phishing-detector.js"></script>
+
+</body>
+</html>
