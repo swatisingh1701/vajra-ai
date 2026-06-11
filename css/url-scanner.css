@@ -1,0 +1,348 @@
+/* URL Scanner - Vajra AI */
+/* Premium Futuristic Cybersecurity UI */
+
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #060B17;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Background Glow Effects */
+body::before {
+  content: '';
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: #3B82F6;
+  filter: blur(120px);
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -100px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: #7C3AED;
+  filter: blur(120px);
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Main Scanner Card - Glassmorphism */
+.scanner-card {
+  background: rgba(13, 18, 35, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 rgba(255, 255, 255, 0.05);
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scanner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+/* Header */
+.header {
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  font-size: 14px;
+  color: #94A3B8;
+  line-height: 1.6;
+}
+
+/* Input Section */
+.input-section {
+  margin-bottom: 20px;
+}
+
+#urlInput {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  background: #0D1223;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#urlInput::placeholder {
+  color: #64748B;
+}
+
+#urlInput:focus {
+  border-color: #3B82F6;
+  box-shadow: 
+    0 0 0 3px rgba(59, 130, 246, 0.15),
+    0 0 20px rgba(59, 130, 246, 0.2);
+  background: #11162D;
+}
+
+/* Scan Button */
+#scanBtn {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  background: linear-gradient(135deg, #3B82F6 0%, #7C3AED 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  letter-spacing: 0.3px;
+}
+
+#scanBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 24px rgba(59, 130, 246, 0.4),
+    0 0 30px rgba(124, 58, 237, 0.25);
+  background: linear-gradient(135deg, #4A92FF 0%, #8B4BFF 100%);
+}
+
+#scanBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Result Card */
+.result-card {
+  background: rgba(13, 18, 35, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 28px;
+  transition: all 0.3s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.result-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+#riskLevel {
+  font-size: 15px;
+  color: #94A3B8;
+  line-height: 1.6;
+}
+
+/* Indicators */
+.indicators {
+  background: rgba(13, 18, 35, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.indicators:hover {
+  transform: translateY(-2px);
+  border-color: rgba(124, 58, 237, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.indicators h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+#indicatorList {
+  font-size: 14px;
+  color: #94A3B8;
+  line-height: 1.7;
+}
+
+/* Recommendation */
+.recommendation {
+  background: rgba(13, 18, 35, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.recommendation:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.recommendation h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+#recommendationText {
+  font-size: 14px;
+  color: #94A3B8;
+  line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .scanner-card {
+    padding: 30px 24px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .header p {
+    font-size: 13px;
+  }
+
+  #urlInput {
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+
+  #scanBtn {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .result-card,
+  .indicators,
+  .recommendation {
+    padding: 20px;
+  }
+
+  .result-card h2 {
+    font-size: 16px;
+  }
+
+  .indicators h3,
+  .recommendation h3 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  .scanner-card {
+    padding: 24px 20px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  #urlInput,
+  #scanBtn {
+    font-size: 13px;
+  }
+}
+
+.safe-result{
+    color: #22c55e;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.moderate-result{
+    color: #f59e0b;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.danger-result{
+    color: #ef4444;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.indicator{
+    padding: 14px 18px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.success{
+    background: rgba(34,197,94,0.12);
+    color: #22c55e;
+}
+
+.warning{
+    background: rgba(245,158,11,0.12);
+    color: #f59e0b;
+}
+
+.danger{
+    background: rgba(239,68,68,0.12);
+    color: #ef4444;
+}

@@ -6,24 +6,88 @@
     <title>URL Scanner | Vajra AI</title>
 
     <link rel="stylesheet" href="../css/url-scanner.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div class="container">
 
-        <div class="scanner-card">
+<div class="container">
 
-            <!-- Header -->
+    <div class="scanner-card">
 
-            <div class="header">
-                <h1>🔗 URL Scanner</h1>
+        <!-- Header -->
+        <div class="header">
 
-                <p>One click can change everything.<br>
-                     Scan first.</p>
-            </div>
+            <h1>🔗 URL Scanner</h1>
 
+            <p>
+                Every link tells a story. Vajra AI reveals the dangerous ones.
+            </p>
 
         </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+
+            <input
+                type="text"
+                id="urlInput"
+                placeholder="Enter or paste a URL to scan...">
+
+        </div>
+
+        <!-- Scan Button -->
+        <button id="scanBtn">
+
+            Scan URL
+
+        </button>
+
+        <!-- Result -->
+        <div class="result-card">
+
+            <h2>Scan Result</h2>
+
+            <div id="riskLevel">
+
+                Awaiting scan...
+
+            </div>
+
+        </div>
+
+        <!-- Indicators -->
+        <div class="indicators">
+
+            <h3>Detected Indicators</h3>
+
+            <div id="indicatorList">
+
+                No indicators detected yet.
+
+            </div>
+
+        </div>
+
+        <!-- Recommendation -->
+        <div class="recommendation">
+
+            <h3>Security Recommendation</h3>
+
+            <div id="recommendationText">
+
+                Enter a URL and begin scanning.
+
+            </div>
+
+        </div>
+
     </div>
+
+</div>
+
+<script src="../js/url-scanner.js"></script>
+
 </body>
 </html>
