@@ -132,10 +132,10 @@ The platform helps users:
 * [x] Login Page
 * [x] Dashboard
 * [x] Password Analyzer
-* [ ] Password Generator
+* [x] Password Generator
 * [x] Phishing Detector
 * [x] URL Scanner
-* [ ] IP Intelligence
+* [x] IP Intelligence
 * [ ] Firebase Authentication
 * [ ] Scan History
 * [ ] Medha AI Assistant
