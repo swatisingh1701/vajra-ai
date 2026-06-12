@@ -1,0 +1,256 @@
+/* ip-intelligence.css */
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #060B17;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background Glows */
+body::before {
+  content: '';
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: #3B82F6;
+  filter: blur(120px);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -100px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: #7C3AED;
+  filter: blur(120px);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main IP Card */
+.ip-card {
+  background: rgba(16, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ip-card:hover {
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(59, 130, 246, 0.2),
+    0 0 40px rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  font-size: 0.95rem;
+  color: #94A3B8;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.input-section input {
+  flex: 1;
+  background: #0F1623;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  padding: 1.25rem 1.25rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 0 20px rgba(59, 130, 246, 0.05),
+    inset 0 0 10px rgba(59, 130, 246, 0.03);
+}
+
+.input-section input:focus {
+  border-color: #3B82F6;
+  box-shadow: 
+    0 0 30px rgba(59, 130, 246, 0.2),
+    inset 0 0 15px rgba(59, 130, 246, 0.08);
+}
+
+.input-section input::placeholder {
+  color: #64748B;
+}
+
+#lookupBtn {
+  background: linear-gradient(135deg, #3B82F6 0%, #7C3AED 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 0 2rem;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+#lookupBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+}
+
+#lookupBtn i {
+  font-size: 1rem;
+}
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* Info Boxes */
+.info-box {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 1.5rem 1.25rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.info-box:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.info-box h3 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #94A3B8;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-box p {
+  font-size: 1.05rem;
+  color: #3B82F6;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Responsiveness */
+@media (max-width: 896px) {
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ip-card {
+    padding: 2rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  .header p {
+    font-size: 0.85rem;
+  }
+
+  .input-section {
+    flex-direction: column;
+  }
+
+  #lookupBtn {
+    padding: 1.25rem;
+    justify-content: center;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box {
+    padding: 1.25rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  .input-section input {
+    padding: 1rem 1rem;
+    font-size: 0.95rem;
+  }
+}
