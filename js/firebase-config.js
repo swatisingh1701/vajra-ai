@@ -4,6 +4,9 @@ from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getAuth }
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
+import { getFirestore }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBE5Nl9u5ypAeLF7TPmVUwORS4y4LZlsr8",
   authDomain: "vajra-ai-3c3a1.firebaseapp.com",
@@ -16,3 +19,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+
+export const db = getFirestore(app);

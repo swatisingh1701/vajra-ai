@@ -65,15 +65,15 @@ Planned capabilities:
 * CSS3
 * JavaScript
 
+### Authentication 
+
+* Firebase Authentication
+* Google Sign-In
+
 ### Backend *(Planned)*
 
 * Node.js
 * Express.js
-
-### Authentication *(Planned)*
-
-* Firebase Authentication
-* Google Sign-In
 
 ### AI Integration *(Planned)*
 
@@ -136,7 +136,7 @@ The platform helps users:
 * [x] Phishing Detector
 * [x] URL Scanner
 * [x] IP Intelligence
-* [ ] Firebase Authentication
+* [x] Firebase Authentication
 * [ ] Scan History
 * [ ] Medha AI Assistant
 * [ ] Voice Interaction

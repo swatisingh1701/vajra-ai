@@ -29,8 +29,33 @@ onAuthStateChanged(auth, (user) => {
 
         const name = user.displayName || user.email.split("@")[0];
 
-        document.getElementById("welcomeText").innerHTML =
-            `Good Evening, ${name} 👋`;
+        const currentHour = new Date().getHours();
+
+        let greeting;
+
+        if (currentHour < 12) {
+
+            greeting = "Good Morning";
+
+        }
+        else if (currentHour < 17) {
+
+            greeting = "Good Afternoon";
+
+        }
+        else if (currentHour < 21) {
+
+            greeting = "Good Evening";
+
+        }
+        else {
+
+            greeting = "Good Night";
+
+        }
+
+document.getElementById("welcomeText").innerHTML =
+`${greeting}, ${name} 👋`;
 
         document.querySelector(".avatar").innerHTML =
             name.charAt(0).toUpperCase();

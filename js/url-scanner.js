@@ -1,3 +1,10 @@
+import { auth, db } from "./firebase-config.js";
+
+import {
+    collection,
+    addDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
 const scanBtn = document.getElementById("scanBtn");
 const urlInput = document.getElementById("urlInput");
 const scanResult = document.getElementById("riskLevel");
@@ -6,7 +13,7 @@ const recommendationText = document.getElementById("recommendationText");
 
 scanBtn.addEventListener("click", scanURL);
 
-function scanURL() {
+async function scanURL() {
 
     const url = urlInput.value.trim();
 
@@ -16,8 +23,7 @@ function scanURL() {
         scanResult.innerHTML = "Awaiting analysis...";
         scanResult.className = "";
 
-        indicatorList.innerHTML =
-            "No indicators detected yet.";
+        indicatorList.innerHTML = "No indicators detected yet.";
 
         recommendationText.innerHTML =
             "Enter a URL and begin scanning.";
@@ -29,6 +35,7 @@ function scanURL() {
 
     let indicators = [];
     let riskScore = 0;
+    let finalResult = "";
 
     // HTTPS Check
     if (lowerURL.startsWith("https://")) {
@@ -115,7 +122,7 @@ function scanURL() {
         }
     }
 
-    // Hyphens
+    // Multiple hyphens
     const hyphenCount = (lowerURL.match(/-/g) || []).length;
 
     if (hyphenCount >= 3) {
@@ -132,8 +139,10 @@ function scanURL() {
     // Show indicators
     indicatorList.innerHTML = indicators.join("");
 
-    // Risk Result
+    // Result
     if (riskScore <= 1) {
+
+        finalResult = "Safe";
 
         scanResult.innerHTML =
             '<i class="fa-solid fa-circle-check"></i> Safe';
@@ -142,10 +151,11 @@ function scanURL() {
 
         recommendationText.innerHTML =
             "No major risks detected. Proceed normally.";
-
     }
 
     else if (riskScore <= 3) {
+
+        finalResult = "Moderate Risk";
 
         scanResult.innerHTML =
             '<i class="fa-solid fa-triangle-exclamation"></i> Moderate Risk';
@@ -154,10 +164,11 @@ function scanURL() {
 
         recommendationText.innerHTML =
             "Verify the destination before interacting with this link.";
-
     }
 
     else {
+
+        finalResult = "High Risk";
 
         scanResult.innerHTML =
             '<i class="fa-solid fa-circle-xmark"></i> High Risk';
@@ -166,6 +177,34 @@ function scanURL() {
 
         recommendationText.innerHTML =
             "Avoid opening this link unless its legitimacy is confirmed.";
+    }
+
+    // Save to Firestore
+    try {
+
+        const user = auth.currentUser;
+
+        if (user) {
+
+            await addDoc(
+                collection(db, "users", user.uid, "history"),
+                {
+                    feature: "URL Scanner",
+                    input: url,
+                    result: finalResult,
+                    timestamp: new Date()
+                }
+            );
+
+            console.log("History saved successfully");
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error("Firestore Error:", error);
 
     }
 

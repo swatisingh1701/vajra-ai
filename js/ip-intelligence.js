@@ -1,4 +1,13 @@
-const API_KEY = "TO USE THE FEATURE ENTER API KEY FROM IPINFO"; 
+import { auth, db } from "./firebase-config.js";
+
+import {
+    collection,
+    addDoc
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const API_KEY = "7c055c05516798";
+
 const lookupBtn = document.getElementById("lookupBtn");
 const ipInput = document.getElementById("ipInput");
 
@@ -15,18 +24,17 @@ async function lookupIP() {
 
     const ip = ipInput.value.trim();
 
-    // Empty input
     if (ip === "") {
 
         resetFields();
 
         country.textContent = "Please enter an IP address.";
+
         return;
     }
 
     try {
 
-        // Loading state
         country.textContent = "Loading...";
         region.textContent = "Loading...";
         city.textContent = "Loading...";
@@ -40,33 +48,47 @@ async function lookupIP() {
 
         const data = await response.json();
 
-        // Invalid IP
         if (data.status === 404 || data.error) {
 
             resetFields();
 
             country.textContent = "Invalid IP address";
+
             return;
         }
 
         country.textContent = data.country || "Unavailable";
-
         region.textContent = data.region || "Unavailable";
-
         city.textContent = data.city || "Unavailable";
-
         org.textContent = data.org || "Unavailable";
-
         timezone.textContent = data.timezone || "Unavailable";
 
-        // Detect IPv4 vs IPv6
+        let ipVersion = "IPv4";
+
         if (ip.includes(":")) {
 
-            version.textContent = "IPv6";
+            ipVersion = "IPv6";
 
-        } else {
+        }
 
-            version.textContent = "IPv4";
+        version.textContent = ipVersion;
+
+        // SAVE TO FIRESTORE
+        const user = auth.currentUser;
+
+        if (user) {
+
+            await addDoc(
+                collection(db, "users", user.uid, "history"),
+                {
+                    feature: "IP Intelligence",
+                    input: ip,
+                    result: `${data.country} | ${data.city}`,
+                    timestamp: new Date()
+                }
+            );
+
+            console.log("IP lookup saved");
 
         }
 
@@ -77,12 +99,12 @@ async function lookupIP() {
         resetFields();
 
         country.textContent = "Lookup failed";
+
         console.error(error);
 
     }
 
 }
-
 
 function resetFields() {
 

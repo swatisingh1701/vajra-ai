@@ -1,3 +1,10 @@
+import { auth, db } from "./firebase-config.js";
+
+import {
+    collection,
+    addDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
 const analyzeBtn = document.getElementById("analyzeBtn");
 const messageInput = document.getElementById("messageInput");
 const threatLevel = document.getElementById("threatLevel");
@@ -29,11 +36,10 @@ const phishingKeywords = [
 
 analyzeBtn.addEventListener("click", analyzeThreat);
 
-function analyzeThreat() {
+async function analyzeThreat() {
 
     const message = messageInput.value.trim();
 
-    // Empty input
     if (message === "") {
 
         threatLevel.innerHTML = "Awaiting analysis...";
@@ -52,6 +58,7 @@ function analyzeThreat() {
 
     let detectedIndicators = [];
     let riskScore = 0;
+    let finalResult = "";
 
     // Keyword Detection
     for (let word of phishingKeywords) {
@@ -103,7 +110,9 @@ function analyzeThreat() {
         indicatorList.innerHTML =
             "No suspicious indicators detected.";
 
-    } else {
+    }
+
+    else {
 
         indicatorList.innerHTML =
             detectedIndicators.join("<br>");
@@ -112,6 +121,8 @@ function analyzeThreat() {
 
     // Risk Level
     if (riskScore === 0) {
+
+        finalResult = "Low Risk";
 
         threatLevel.innerHTML = "Low Risk";
         threatLevel.style.color = "#22c55e";
@@ -123,6 +134,8 @@ function analyzeThreat() {
 
     else if (riskScore <= 3) {
 
+        finalResult = "Moderate Risk";
+
         threatLevel.innerHTML = "Moderate Risk";
         threatLevel.style.color = "#f59e0b";
 
@@ -133,11 +146,42 @@ function analyzeThreat() {
 
     else {
 
+        finalResult = "High Risk";
+
         threatLevel.innerHTML = "High Risk";
         threatLevel.style.color = "#ef4444";
 
         recommendationText.innerHTML =
             "Avoid interacting with this message. Do not click links or share credentials.";
+
+    }
+
+    // Save to Firestore
+    try {
+
+        const user = auth.currentUser;
+
+        if (user) {
+
+            await addDoc(
+                collection(db, "users", user.uid, "history"),
+                {
+                    feature: "Phishing Detector",
+                    input: message,
+                    result: finalResult,
+                    timestamp: new Date()
+                }
+            );
+
+            console.log("Phishing history saved");
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
 
     }
 
