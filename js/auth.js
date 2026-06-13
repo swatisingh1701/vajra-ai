@@ -1,46 +1,129 @@
-const passwordInput = document.getElementById("password");
-const togglePassword = document.querySelector(".toggle-password");
+import { auth } from "./firebase-config.js";
 
-togglePassword.addEventListener("click", () => {
+import {
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-    if (passwordInput.type === "password") {
 
-        passwordInput.type = "text";
-        togglePassword.textContent = "🙈";
+// =====================
+// ELEMENTS
+// =====================
 
-    } else {
+const loginForm = document.getElementById("login-form");
 
-        passwordInput.type = "password";
-        togglePassword.textContent = "👁️";
+const loginBtn = document.querySelector(".login-btn");
+
+const googleBtn = document.querySelector(".google-btn");
+
+const signupTab = document.getElementById("signupTab");
+
+const loginTab = document.getElementById("loginTab");
+
+
+// =====================
+// MODE SWITCH
+// =====================
+
+let isSignupMode = false;
+
+signupTab.addEventListener("click", () => {
+
+    isSignupMode = true;
+
+    signupTab.classList.add("active");
+    loginTab.classList.remove("active");
+
+    loginBtn.innerText = "Create Account";
+
+});
+
+loginTab.addEventListener("click", () => {
+
+    isSignupMode = false;
+
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
+
+    loginBtn.innerText = "Login";
+
+});
+
+
+// =====================
+// LOGIN / SIGNUP FORM
+// =====================
+
+loginForm.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+
+    const password = document.getElementById("password").value;
+
+    try {
+
+        if (isSignupMode) {
+
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            alert("Account created successfully!");
+
+        }
+
+        else {
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            alert("Login successful!");
+
+        }
+
+        window.location.href = "dashboard.html";
+
+    }
+
+    catch (error) {
+
+        alert(error.message);
 
     }
 
 });
 
 
-const loginForm = document.getElementById("login-form");
+// =====================
+// GOOGLE LOGIN
+// =====================
 
-loginForm.addEventListener("submit", function(e) {
+googleBtn.addEventListener("click", async () => {
 
-    e.preventDefault();
+    try {
 
-    localStorage.setItem("userName", "Swati");
+        const provider = new GoogleAuthProvider();
 
-    window.location.href = "dashboard.html";
+        await signInWithPopup(auth, provider);
 
-});
+        window.location.href = "dashboard.html";
 
+    }
 
-const tabs = document.querySelectorAll(".tabs button");
+    catch (error) {
 
-tabs.forEach(tab => {
+        alert(error.message);
 
-    tab.addEventListener("click", () => {
-
-        tabs.forEach(btn => btn.classList.remove("active"));
-
-        tab.classList.add("active");
-
-    });
+    }
 
 });

@@ -1,3 +1,10 @@
+import { auth } from "./firebase-config.js";
+import {
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
 const ctx = document.getElementById("scanChart");
 
 new Chart(ctx, {
@@ -16,17 +23,34 @@ new Chart(ctx, {
     }
 });
 
-const userName = localStorage.getItem("userName");
+onAuthStateChanged(auth, (user) => {
 
-if(userName){
+    if (user) {
 
-    document.getElementById("welcomeText").innerHTML =
-    `Good Evening, ${userName} 👋`;
+        const name = user.displayName || user.email.split("@")[0];
 
-}
-else{
+        document.getElementById("welcomeText").innerHTML =
+            `Good Evening, ${name} 👋`;
 
-    document.getElementById("welcomeText").innerHTML =
-    "Good Evening, Guardian 👋";
+        document.querySelector(".avatar").innerHTML =
+            name.charAt(0).toUpperCase();
 
-}
+    }
+
+    else {
+
+        window.location.href = "login.html";
+
+    }
+
+});
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener("click", async () => {
+
+    await signOut(auth);
+
+    window.location.href = "login.html";
+
+});
