@@ -87,7 +87,6 @@ loginForm.addEventListener("submit", async (e) => {
                 password
             );
 
-            alert("Login successful!");
 
         }
 
