@@ -6,7 +6,7 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-const API_KEY = "7c055c05516798";
+const API_KEY = "";
 
 const lookupBtn = document.getElementById("lookupBtn");
 const ipInput = document.getElementById("ipInput");
