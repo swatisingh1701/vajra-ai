@@ -2,7 +2,7 @@
 
 **Detect. Defend. Dominate.**
 
-Vajra AI is an AI-powered cybersecurity platform designed to help users identify digital threats, strengthen security, and improve cyber awareness. Inspired by the mythological weapon **Vajra**, the project combines modern web technologies with intelligent security tools.
+Vajra AI is an AI-powered cybersecurity platform designed to help users identify digital threats, strengthen security, and improve cyber awareness. Inspired by the mythological weapon **Vajra (वज्र)**, the project combines modern web technologies with intelligent security tools.
 
 ---
 
@@ -11,50 +11,51 @@ Vajra AI is an AI-powered cybersecurity platform designed to help users identify
 ### 🔐 Password Analyzer
 
 * Evaluates password strength
-* Detects weak patterns and common passwords
+* Detects weak patterns
 * Provides security recommendations
 
 ### 🔑 Password Generator
 
 * Generates strong passwords
 * Supports complex combinations
-* Helps users improve account security
+* Improves account security
 
 ### 🎣 Phishing Detector
 
-* Analyzes suspicious emails and messages
-* Detects phishing indicators
-* Generates threat levels and recommendations
+* AI-powered phishing message analysis
+* Threat level classification
+* Security recommendations
 
 ### 🔗 URL Scanner
 
-* Examines URLs for suspicious patterns
-* Detects risky links and insecure protocols
-* Provides security analysis
+* VirusTotal API integration
+* Heuristic URL analysis
+* Detects suspicious keywords and risky patterns
+* Provides combined risk assessment
 
 ### 🌐 IP Intelligence
 
-* Retrieves information about IP addresses
-* Displays location and network details
-* Provides basic reconnaissance insights
+* Retrieves IP information
+* Displays network and location details
+* Provides reconnaissance insights
 
-### 🧠 Medha AI *(Coming Soon)*
-
-Inspired by the Sanskrit word **Medha (मेधा)** meaning *wisdom and intelligence*.
-
-Planned capabilities:
-
-* Cybersecurity Q&A
-* AI-generated explanations
-* Voice interaction
-* Threat awareness guidance
-
-### 📜 Scan History *(Coming Soon)*
+### 📜 Scan History 
 
 * Store previous scans
 * Review results anytime
 * Track user activity
 
+### 🧠 Medha AI *(In Development)*
+
+Inspired by the Sanskrit word **Medha (मेधा)** meaning wisdom and intelligence.
+
+Planned capabilities:
+
+* Cybersecurity Q&A
+* Hindi and English support
+* Voice interaction
+* Female voice responses
+* Threat awareness guidance
 ---
 
 ## 🛠 Tech Stack
@@ -65,21 +66,31 @@ Planned capabilities:
 * CSS3
 * JavaScript
 
-### Authentication 
+### Authentication
 
 * Firebase Authentication
 * Google Sign-In
 
-### Backend *(Planned)*
+### Database
+
+* Firebase Firestore
+
+### APIs Used
+
+* Groq API (Phishing Detector)
+* VirusTotal API (URL Scanner)
+* IPinfo API (IP Intelligence)
+
+### AI Integration (Upcoming)
+
+* Sarvam AI API
+
+### Backend (Planned)
 
 * Node.js
 * Express.js
 
-### AI Integration *(Planned)*
-
-* Sarvam AI API
-
-### Deployment *(Planned)*
+### Deployment (Planned)
 
 * Vercel
 * Render
@@ -101,10 +112,34 @@ Vajra-AI/
 │   ├── phishing-detector.html
 │   ├── url-scanner.html
 │   ├── ip-intelligence.html
-│   ├── medha.html
+│   ├── history.html
+│   └── medha.html
 │
 ├── css/
+│   ├── login.css
+│   ├── dashboard.css
+│   ├── password-analyzer.css
+│   ├── password-generator.css
+│   ├── phishing-detector.css
+│   ├── url-scanner.css
+│   ├── ip-intelligence.css
+│   ├── history.css
+│   └── medha.css
+│
 ├── js/
+│   ├── auth.js
+│   ├── firebase-config.js
+│   ├── password-analyzer.js
+│   ├── password-generator.js
+│   ├── phishing-detector.js
+│   ├── url-scanner.js
+│   ├── ip-intelligence.js
+│   ├── history.js
+│   └── medha.js
+│
+├── assets/
+│   ├── google-logo.png
+│   └── shield-image.png
 │
 └── README.md
 ```
@@ -137,7 +172,8 @@ The platform helps users:
 * [x] URL Scanner
 * [x] IP Intelligence
 * [x] Firebase Authentication
-* [ ] Scan History
+* [x] Firestore Integration
+* [x] Scan History
 * [ ] Medha AI Assistant
 * [ ] Voice Interaction
 * [ ] Sarvam AI Integration
@@ -148,15 +184,15 @@ The platform helps users:
 
 ## 📜 Inspiration
 
-### Vajra
+### ⚡ Vajra (वज्र)
 
-Represents **strength, protection, and resilience**.
+Derived from Sanskrit, **Vajra** represents strength, protection, resilience, and the divine weapon associated with Lord Indra.
 
-### Medha
+### 🧠 Medha (मेधा)
 
-Represents **wisdom and intelligence**.
+Derived from Sanskrit, **Medha** symbolizes wisdom, intelligence, learning, and understanding.
 
-Together, they form a cybersecurity ecosystem focused on empowering users against digital threats.
+Together, **Vajra** and **Medha** form a cybersecurity ecosystem focused on protection through intelligence.
 
 ---
 
