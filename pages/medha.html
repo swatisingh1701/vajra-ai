@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDHA AI | Vajra AI</title>
+
+    <link rel="stylesheet" href="../css/medha.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="medha-container">
+
+    <!-- Header -->
+    <div class="medha-header">
+
+        <a href="dashboard.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Dashboard
+        </a>
+
+        <h1>MEDHA AI</h1>
+
+    </div>
+
+
+    <div class="medha-content">
+
+        <!-- Voice Section -->
+        <div class="voice-card">
+
+            <div class="mic-circle">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
+
+            <h2>Voice Assistant</h2>
+
+            <p id="voice-status">
+                Ready to listen
+            </p>
+
+            <button id="voice-btn">
+                Start Voice
+            </button>
+
+        </div>
+
+
+        <!-- Chat Section -->
+        <div class="chat-card">
+
+            <div id="chat-box">
+
+                <div class="bot-message">
+                    Hello! I'm MEDHA AI. Ask me anything related to cybersecurity.
+                </div>
+
+            </div>
+
+
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="user-input"
+                    placeholder="Ask a cybersecurity question...">
+
+                <button id="send-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../js/medha.js"></script>
+
+</body>
+</html>
