@@ -1,9 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+import uuid
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import requests
 import os
+
 
 load_dotenv()
 
@@ -31,7 +34,7 @@ class ChatRequest(BaseModel):
 def medha_chat(data: ChatRequest):
 
     system_prompt = """
-You are MEDHA AI, the cybersecurity assistant of Vajra AI.
+You are MEDHA AI, the female cybersecurity assistant of Vajra AI.
 
 Only answer questions related to:
 - Cybersecurity
@@ -88,3 +91,44 @@ If a user asks unrelated questions, politely explain that MEDHA specializes in c
     return {
         "reply": reply
     }
+
+# @app.post("/api/speak")
+# def speak(data: ChatRequest):
+
+#     filename = f"audio_{uuid.uuid4().hex}.mp3"
+
+#     headers = {
+#         "api-subscription-key": SARVAM_API_KEY,
+#         "Content-Type": "application/json"
+#     }
+
+#     payload = {
+#         "text": data.message,
+#         "target_language_code": "en-IN",
+#         "speaker": "ritu",
+#         "model": "bulbul:v3",
+#         "pace": 1,
+#         "speech_sample_rate": 22050,
+#         "output_audio_codec": "mp3",
+#         "enable_preprocessing": True
+#     }
+
+#     response = requests.post(
+#         "https://api.sarvam.ai/text-to-speech/stream",
+#         headers=headers,
+#         json=payload,
+#         stream=True
+#     )
+
+#     response.raise_for_status()
+
+#     with open(filename, "wb") as f:
+#         for chunk in response.iter_content(chunk_size=8192):
+#             if chunk:
+#                 f.write(chunk)
+
+#     return FileResponse(
+#         filename,
+#         media_type="audio/mpeg"
+#     )
+
