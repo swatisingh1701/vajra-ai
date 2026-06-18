@@ -1,5 +1,3 @@
-const API_KEY = "";
-
 import { auth, db } from "./firebase-config.js";
 
 import {
@@ -40,7 +38,7 @@ async function analyzeThreat() {
         recommendationText.innerHTML = "Please wait...";
 
         const response = await fetch(
-            "https://api.groq.com/openai/v1/chat/completions",
+            "http://localhost:3000/api/phishing",
             {
                 method: "POST",
 

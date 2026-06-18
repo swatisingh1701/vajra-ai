@@ -43,7 +43,7 @@ async function lookupIP() {
         version.textContent = "Loading...";
 
         const response = await fetch(
-            `https://ipinfo.io/${ip}/json?token=${API_KEY}`
+            `http://localhost:3000/api/iplookup/${ip}`
         );
 
         const data = await response.json();

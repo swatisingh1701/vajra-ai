@@ -1,6 +1,3 @@
-const API_KEY = "";
-
-
 import { auth, db } from "./firebase-config.js";
 
 
@@ -201,7 +198,7 @@ async function scanURL() {
 
 
             const submitResponse = await fetch(
-                "https://www.virustotal.com/api/v3/urls",
+                "http://localhost:3000/api/urlscanner",
                 {
                     method: "POST",
 

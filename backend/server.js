@@ -1,3 +1,11 @@
+import phishingRoute from "./routes/phishing.js";
+import urlRoute from "./routes/urlScanner.js";
+import ipRoute from "./routes/ipLookup.js";
+
+app.use("/api/phishing", phishingRoute);
+app.use("/api/urlscanner", urlRoute);
+app.use("/api/iplookup", ipRoute);
+
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
