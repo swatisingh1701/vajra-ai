@@ -27,79 +27,133 @@
     </div>
 
 
-    <!-- Settings Card -->
-    <div class="settings-card">
+    <div class="settings-grid">
 
-        <!-- Appearance -->
-        <div class="setting-item">
+        <!-- Popup Modal -->
 
-            <div class="setting-info">
-                <h3>Appearance</h3>
-                <p>Customize theme and visual preferences.</p>
+        <div class="modal" id="settingsModal">
+
+            <div class="modal-card">
+
+                <span class="close-modal">&times;</span>
+
+                <h2 id="modal-title"></h2>
+
+                <p id="modal-content"></p>
+
             </div>
-
-            <button class="setting-btn">
-                Coming Soon
-            </button>
 
         </div>
 
+        <!-- Profile -->
+        <div class="setting-card">
 
-        <!-- Notifications -->
-        <div class="setting-item">
+            <div class="setting-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
 
-            <div class="setting-info">
-                <h3>Notifications</h3>
-                <p>Manage alerts and update preferences.</p>
+            <div class="setting-content">
+                <h2>Profile</h2>
+                <p>Manage your account information.</p>
             </div>
 
             <button class="setting-btn">
-                Coming Soon
-            </button>
-
-        </div>
-
-
-        <!-- MEDHA AI -->
-        <div class="setting-item">
-
-            <div class="setting-info">
-                <h3>MEDHA AI Preferences</h3>
-                <p>Manage chatbot settings and future voice options.</p>
-            </div>
-
-            <button class="setting-btn">
-                Coming Soon
+                Edit Profile
             </button>
 
         </div>
 
 
         <!-- Security -->
-        <div class="setting-item">
+        <div class="setting-card">
 
-            <div class="setting-info">
-                <h3>Security</h3>
-                <p>Privacy and security related settings.</p>
+            <div class="setting-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div class="setting-content">
+                <h2>Security</h2>
+                <p>Update password and security settings.</p>
             </div>
 
             <button class="setting-btn">
-                Coming Soon
+                Security Settings
+            </button>
+
+        </div>
+
+
+        <!-- Notifications -->
+        <div class="setting-card">
+
+            <div class="setting-icon">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <div class="setting-content">
+                <h2>Notifications</h2>
+                <p>Enable or disable alerts and reminders.</p>
+            </div>
+
+            <button class="setting-btn">
+                Manage Notifications
+            </button>
+
+        </div>
+
+
+        <!-- Data & History -->
+        <div class="setting-card">
+
+            <div class="setting-icon">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+
+            <div class="setting-content">
+                <h2>History</h2>
+                <p>View or clear your activity history.</p>
+            </div>
+
+            <button class="setting-btn">
+                Open History
+            </button>
+
+        </div>
+
+
+        <!-- Help -->
+        <div class="setting-card">
+
+            <div class="setting-icon">
+                <i class="fa-solid fa-circle-question"></i>
+            </div>
+
+            <div class="setting-content">
+                <h2>Help & Support</h2>
+                <p>Get assistance and report issues.</p>
+            </div>
+
+            <button class="setting-btn">
+                Contact Support
             </button>
 
         </div>
 
 
         <!-- About -->
-        <div class="setting-item">
+        <div class="setting-card">
 
-            <div class="setting-info">
-                <h3>About Vajra AI</h3>
+            <div class="setting-icon">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+
+            <div class="setting-content">
+                <h2>About Vajra AI</h2>
                 <p>Version information and project details.</p>
             </div>
 
             <button class="setting-btn">
-                v1.0
+                View Details
             </button>
 
         </div>
@@ -108,7 +162,7 @@
 
 </div>
 
-<script src="../js/settings.js"></script>
+<script src="../js/settings.js"></script> 
 
 </body>
 </html>

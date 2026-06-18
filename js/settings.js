@@ -1,135 +1,113 @@
-// Theme buttons
-const darkBtn = document.getElementById("dark-mode");
-const lightBtn = document.getElementById("light-mode");
+const buttons = document.querySelectorAll(".setting-btn");
 
-darkBtn.addEventListener("click", () => {
+const modal = document.getElementById("settingsModal");
+const modalTitle = document.getElementById("modal-title");
+const modalContent = document.getElementById("modal-content");
+const closeBtn = document.querySelector(".close-modal");
 
-    document.body.classList.remove("light-theme");
-    document.body.classList.add("dark-theme");
+buttons[0].addEventListener("click", () => {
 
-});
+    modalTitle.textContent = "Profile";
 
-lightBtn.addEventListener("click", () => {
+    modalContent.innerHTML = `
+    <strong>About this feature:</strong> This future will be added in future<br><br>
+    `;
 
-    document.body.classList.remove("dark-theme");
-    document.body.classList.add("light-theme");
-
-});
-
-
-// Accent Colors
-const colorCircles = document.querySelectorAll(".color-option");
-
-colorCircles.forEach(circle => {
-
-    circle.addEventListener("click", () => {
-
-        colorCircles.forEach(c =>
-            c.classList.remove("active-color")
-        );
-
-        circle.classList.add("active-color");
-
-    });
+    modal.style.display = "flex";
 
 });
 
 
-// Copy API Key
-const copyBtn = document.getElementById("copy-key");
+buttons[1].addEventListener("click", () => {
 
-if (copyBtn) {
+    modalTitle.textContent = "Security";
 
-    copyBtn.addEventListener("click", () => {
+    modalContent.innerHTML = `
+    • API keys are protected using .env<br><br>
+    • FastAPI backend enabled<br><br>
+    • Secure architecture for AI services
+    `;
 
-        navigator.clipboard.writeText(
-            "************abcd"
-        );
+    modal.style.display = "flex";
 
-        alert("API key copied.");
-
-    });
-
-}
+});
 
 
-// Edit Profile
-const editProfile = document.getElementById("edit-profile");
+buttons[2].addEventListener("click", () => {
 
-if (editProfile) {
+    modalTitle.textContent = "Notifications";
 
-    editProfile.addEventListener("click", () => {
+    modalContent.innerHTML = `
+    Dashboard alerts are currently enabled.
+    Future versions may include email notifications.
+    `;
 
-        alert("Profile editing will be added later.");
+    modal.style.display = "flex";
 
-    });
-
-}
-
-
-// Change Password
-const changePassword = document.getElementById("change-password");
-
-if (changePassword) {
-
-    changePassword.addEventListener("click", () => {
-
-        alert("Password change feature will be added later.");
-
-    });
-
-}
+});
 
 
-// Two Factor Authentication
-const twoFactor = document.getElementById("two-factor");
+buttons[3].addEventListener("click", () => {
 
-if (twoFactor) {
+    window.location.href = "history.html";
 
-    twoFactor.addEventListener("click", () => {
-
-        alert("2FA support will be added later.");
-
-    });
-
-}
+});
 
 
-// Sign Out
-const signOutBtn = document.getElementById("sign-out");
+buttons[4].addEventListener("click", () => {
 
-if (signOutBtn) {
+    modalTitle.textContent = "Help & Support";
 
-    signOutBtn.addEventListener("click", () => {
+    modalContent.innerHTML = `
+    Report issues through the GitHub repository.<br><br>
+    Developer: Swati Singh
+    `;
 
-        if (confirm("Sign out from Vajra AI?")) {
+    modal.style.display = "flex";
 
-            window.location.href = "../index.html";
-
-        }
-
-    });
-
-}
+});
 
 
-// Delete Account
-const deleteBtn = document.getElementById("delete-account");
+buttons[5].addEventListener("click", () => {
 
-if (deleteBtn) {
+    modalTitle.textContent = "About Vajra AI";
 
-    deleteBtn.addEventListener("click", () => {
+    modalContent.innerHTML = `
+    <strong>Version:</strong> V1<br><br>
 
-        const choice = confirm(
-            "This action cannot be undone. Continue?"
-        );
+    Vajra AI is an AI-powered cybersecurity platform designed to help users detect threats and improve cyber awareness.<br><br>
 
-        if (choice) {
+    <strong>Developer:</strong> Swati Singh<br><br>
 
-            alert("Account deletion backend not connected yet.");
+    Features:
+    • Password Analyzer<br>
+    • URL Scanner<br>
+    • IP Intelligence<br>
+    • MEDHA AI Assistant<br>
+    • Activity History<br><br>
 
-        }
+    <strong>Tagline:</strong><br>
+    Detect. Defend. Dominate.
+    `;
 
-    });
+    modal.style.display = "flex";
 
-}
+});
+
+
+closeBtn.addEventListener("click", () => {
+
+    modal.style.display = "none";
+
+});
+
+
+window.addEventListener("click", (event) => {
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+
+    }
+
+});
