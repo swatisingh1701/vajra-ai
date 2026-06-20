@@ -300,3 +300,48 @@ body::after {
 .close-modal:hover{
     color:white;
 }
+
+.profile-box{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.profile-box label{
+    color:#cbd5e1;
+    font-size:0.95rem;
+}
+
+.profile-box input,
+.profile-box textarea,
+.profile-box select{
+
+    background:#0f172a;
+    border:1px solid #334155;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+    outline:none;
+}
+
+.profile-box textarea{
+    min-height:100px;
+    resize:none;
+}
+
+#saveProfileBtn{
+
+    margin-top:10px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #3b82f6,
+        #7c3aed
+    );
+
+    color:white;
+    cursor:pointer;
+}

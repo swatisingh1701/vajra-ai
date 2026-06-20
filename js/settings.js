@@ -1,5 +1,13 @@
-const buttons = document.querySelectorAll(".setting-btn");
+import { auth, db } from "./firebase-config.js";
 
+import {
+    doc,
+    getDoc,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
+const buttons = document.querySelectorAll(".setting-btn");
 const modal = document.getElementById("settingsModal");
 const modalTitle = document.getElementById("modal-title");
 const modalContent = document.getElementById("modal-content");
@@ -10,10 +18,38 @@ buttons[0].addEventListener("click", () => {
     modalTitle.textContent = "Profile";
 
     modalContent.innerHTML = `
-    <strong>About this feature:</strong> This future will be added in future<br><br>
+
+        <div class="profile-box">
+
+            <label>Name</label>
+            <input type="text" id="profileName">
+
+            <label>Email</label>
+            <input type="email" id="profileEmail" disabled>
+
+            <label>Gender</label>
+            <select id="profileGender">
+                <option value="">Select</option>
+                <option>Female</option>
+                <option>Male</option>
+                <option>Other</option>
+            </select>
+
+            <label>Bio</label>
+            <textarea id="profileBio"
+            placeholder="Tell something about yourself"></textarea>
+
+            <button id="saveProfileBtn">
+                Save Changes
+            </button>
+
+        </div>
+
     `;
 
     modal.style.display = "flex";
+
+    loadProfile();
 
 });
 
@@ -111,3 +147,71 @@ window.addEventListener("click", (event) => {
     }
 
 });
+
+async function loadProfile() {
+
+    const user = auth.currentUser;
+
+    if (!user) return;
+
+    document.getElementById("profileEmail").value =
+        user.email;
+
+    const ref = doc(db, "users", user.uid);
+
+    const snap = await getDoc(ref);
+
+    if (snap.exists()) {
+
+        const data = snap.data();
+
+        document.getElementById("profileName").value =
+            data.name || "";
+
+        document.getElementById("profileGender").value =
+            data.gender || "";
+
+        document.getElementById("profileBio").value =
+            data.bio || "";
+
+    }
+
+    document
+        .getElementById("saveProfileBtn")
+        .addEventListener("click", saveProfile);
+
+}
+
+
+async function saveProfile() {
+
+    const user = auth.currentUser;
+
+    if (!user) return;
+
+    await setDoc(
+
+        doc(db, "users", user.uid),
+
+        {
+
+            name:
+                document.getElementById("profileName").value,
+
+            gender:
+                document.getElementById("profileGender").value,
+
+            bio:
+                document.getElementById("profileBio").value,
+
+            email: user.email
+
+        },
+
+        { merge: true }
+
+    );
+
+    alert("Profile updated successfully.");
+
+}
