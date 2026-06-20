@@ -783,3 +783,39 @@ body{
         font-size: 1.05rem;
     }
 }
+
+/* ===== Mobile Navigation ===== */
+
+.mobile-sidebar{
+    display: none;
+}
+
+.overlay{
+    display: none;
+}
+
+@media (max-width:768px){
+
+    /* hide desktop sidebar */
+    .sidebar{
+        display:none;
+    }
+
+    /* hamburger visible */
+    .hamburger{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    /* top bar row me hi rahe */
+    .top-bar{
+        flex-direction:row;
+    }
+
+    /* mobile sidebar */
+    .mobile-sidebar{
+        display:block;
+    }
+
+}
