@@ -15,9 +15,12 @@
 </head>
 <body>
 
+<!-- Overlay for sidebar -->
+<div class="overlay"></div>
+
 <div class="container">
 
-    <!-- Sidebar -->
+    <!-- Sidebar (Desktop) -->
     <div class="sidebar">
 
         <h2>⚡ Vajra AI</h2>
@@ -42,12 +45,16 @@
 
     </div>
 
-
     <!-- Main Area -->
     <div class="main">
 
         <!-- Navbar -->
         <div class="top-bar">
+
+            <!-- Hamburger Icon for Mobile -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
             <input type="text" placeholder="Search threats, scans...">
 
@@ -65,7 +72,6 @@
 
         </div>
 
-
         <!-- Welcome -->
         <div class="welcome">
 
@@ -76,7 +82,6 @@
             </p>
 
         </div>
-
 
         <!-- Stats Cards -->
         <div class="cards">
@@ -102,7 +107,6 @@
             </div>
 
         </div>
-
 
         <!-- Quick Actions -->
         <div class="section-title">
@@ -133,7 +137,6 @@
 
         </div>
 
-
         <!-- Recent Activity -->
         <div class="section-title">
             Recent Activity
@@ -154,10 +157,74 @@
         </div>
 
     </div>
-
+    
 </div>
 
-<script type="module" src="../js/dashboard.js"></script>    
+<footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <h3>⚡ Vajra AI</h3>
+                    <p>AI-Powered Cybersecurity Platform</p>
+                </div>
+                <div class="footer-made-by">
+                    Made with ❤️ by Swati Singh
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                    <li><a href="phishing-detector.html"><i class="fa-solid fa-box"></i> Features</a></li>
+                    <li><a href="history.html"><i class="fa-solid fa-clock-rotate-left"></i> History</a></li>
+                    <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Features</h4>
+                <ul class="footer-links">
+                    <li><a href="phishing-detector.html"><i class="fa-solid fa-shield"></i> Phishing Detector</a></li>
+                    <li><a href="url-scanner.html"><i class="fa-solid fa-link"></i> URL Scanner</a></li>
+                    <li><a href="ip-intelligence.html"><i class="fa-solid fa-location-crosshairs"></i> IP Intelligence</a></li>
+                    <li><a href="medha.html"><i class="fa-solid fa-robot"></i> MEDHA AI</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul class="footer-social">
+                    <li><a href="https://github.com/swatisingh1701" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="https://linkedin.com/in/swatisingh1701" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                    <li><a href="mailto:swati98207@gmail.com"><i class="fa-solid fa-envelope"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            © 2026 Vajra AI • Made by Swati Singh
+        </div>
+    </footer>
+
+
+
+
+<!-- Sidebar Navigation for Mobile -->
+<div class="mobile-sidebar" id="mobileSidebar">
+    <h2>⚡ Vajra AI</h2>
+    <a href="#"><i class="fa-solid fa-house"></i> Dashboard</a>
+    <a href="phishing-detector.html"><i class="fa-solid fa-shield"></i> Phishing Detector</a>
+    <a href="url-scanner.html"><i class="fa-solid fa-link"></i> URL Scanner</a>
+    <a href="password-checker.html"><i class="fa-solid fa-lock"></i>Password Analyzer</a>
+    <a href="password-generator.html"><i class="fa-solid fa-key"></i>Password Generator</a>
+    <a href="ip-intelligence.html"><i class="fa-solid fa-location-crosshairs"></i>IP Intelligence</a>
+    <a href="medha.html"><i class="fa-solid fa-robot"></i> Medha AI Assistant</a>
+    <a href="history.html"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+    <a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+</div>
+
+<script type="module" src="../js/dashboard.js"></script>
 
 </body>
 </html>

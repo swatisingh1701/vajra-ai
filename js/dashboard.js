@@ -203,3 +203,29 @@ function createChart(totalScans, threatsBlocked, safeActivities) {
     });
 
 }
+
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileSidebar = document.getElementById('mobileSidebar');
+const overlay = document.querySelector('.overlay');
+
+hamburgerBtn.addEventListener('click', () => {
+    mobileSidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+    hamburgerBtn.classList.toggle('active');
+});
+
+// Close sidebar when clicking overlay
+overlay.addEventListener('click', () => {
+    mobileSidebar.classList.remove('open');
+    overlay.classList.remove('open');
+    hamburgerBtn.classList.remove('active');
+});
+
+// Close sidebar when window is resized to desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 640) {
+        mobileSidebar.classList.remove('open');
+        overlay.classList.remove('open');
+        hamburgerBtn.classList.remove('active');
+    }
+});
