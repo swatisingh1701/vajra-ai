@@ -32,7 +32,7 @@ Vajra AI is an AI-powered cybersecurity platform designed to help users identify
 * VirusTotal API integration
 * Heuristic URL analysis
 * Detects suspicious keywords and risky patterns
-* Combined risk assessment
+* Provides combined risk assessment
 
 ### 🌐 IP Intelligence
 
@@ -53,7 +53,7 @@ Inspired by the Sanskrit word **Medha (मेधा)** meaning wisdom and intell
 Features:
 
 * Cybersecurity Q&A
-* English, Hindi and Hinglish support
+* English, Hindi, and Hinglish support
 * Powered by Groq Llama 3.3 70B
 * Friendly conversational assistant
 * Digital safety awareness
@@ -90,7 +90,8 @@ Features:
 
 ### Deployment
 
-* Vercel
+* Vercel (Frontend)
+* Render (Backend)
 
 ---
 
@@ -123,7 +124,8 @@ The platform helps users:
 * [x] Firestore Integration
 * [x] Scan History
 * [x] MEDHA AI Assistant
-* [x] Deployment
+* [x] Frontend Deployment
+* [x] Backend Deployment
 
 ---
 
@@ -138,6 +140,13 @@ Represents strength, protection, resilience, and the divine weapon associated wi
 Represents wisdom, intelligence, learning, and understanding.
 
 Together, **Vajra** and **Medha** create a cybersecurity ecosystem focused on protection through intelligence.
+
+---
+
+## 👩‍💻 Developer
+
+**Swati Singh**
+B.Tech CSE (AI & ML)
 
 ---
 
