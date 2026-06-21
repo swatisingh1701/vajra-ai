@@ -28,7 +28,7 @@ async function analyzeThreat() {
     recommendationText.innerHTML = "Please wait...";
 
     const response = await fetch(
-      "http://localhost:3000/api/phishing",
+      "https://vajra-ai-backend.onrender.com/api/phishing",
       {
         method: "POST",
         headers: {

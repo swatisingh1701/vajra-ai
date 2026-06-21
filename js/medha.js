@@ -28,7 +28,7 @@ async function sendMessage() {
   chatBox.appendChild(loadingDiv);
 
   try {
-    const response = await fetch("http://localhost:3000/api/medha", {
+    const response = await fetch("https://vajra-ai-backend.onrender.com/api/medha", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -40,7 +40,6 @@ async function sendMessage() {
 
     const data = await response.json();
 
-    console.log(data);
     
     loadingDiv.remove();
     addMessage(data.reply, "bot");

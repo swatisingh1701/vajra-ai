@@ -81,7 +81,7 @@ async function scanURL() {
 
     try {
       const submitResponse = await fetch(
-        "http://localhost:3000/api/urlscanner",
+        "https://vajra-ai-backend.onrender.com/api/urlScanner",
         {
           method: "POST",
           headers: {

@@ -33,7 +33,7 @@ async function lookupIP() {
     version.textContent = "Loading...";
 
     const response = await fetch(
-      `http://localhost:3000/api/iplookup/${ip}`
+      `https://vajra-ai-backend.onrender.com/api/ipLookup`
     );
 
     const data = await response.json();
