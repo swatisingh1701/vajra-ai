@@ -12,7 +12,7 @@ router.get('/:ip', async (req, res) => {
     }
 
     const response = await axios.get(
-      `https://api.ipinfo.io/${ip}?json`,
+      `https://ipinfo.io/${ip}/json`,
       {
         headers: {
           'Authorization': `Bearer ${process.env.IPINFO_API_KEY}`
