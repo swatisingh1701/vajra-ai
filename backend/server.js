@@ -1,88 +1,46 @@
-import phishingRoute from "./routes/phishing.js";
-import urlRoute from "./routes/urlScanner.js";
-import ipRoute from "./routes/ipLookup.js";
+import cors from "cors";
+import express from 'express';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-app.use("/api/phishing", phishingRoute);
-app.use("/api/urlscanner", urlRoute);
-app.use("/api/iplookup", ipRoute);
+dotenv.config();
 
-const express = require("express");
-const axios = require("axios");
-const cors = require("cors");
-require("dotenv").config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
+app.use(cors({
+  origin: [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500"
+  ],
+  credentials: true
+}));
+const PORT = process.env.PORT || 3000;
 
-app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, 'pages')));
+app.use(express.static(path.join(__dirname, 'js')));
+app.use(express.static(path.join(__dirname, 'css')));
+app.use(express.static(path.join(__dirname, 'assets')));
 
-// ---------------- URL SCANNER ----------------
+app.use('/backend', express.static(path.join(__dirname, 'backend')));
 
-app.post("/api/urlscan", async (req, res) => {
+app.use('/api', express.Router());
 
-    try {
+import medhaRoute from './routes/medha.js';
+import phishingRoute from './routes/phishing.js';
+import urlScannerRoute from './routes/urlscanner.js';
+import ipLookupRoute from './routes/iplookup.js';
 
-        const response = await axios.post(
+app.use('/api/medha', medhaRoute);
+app.use('/api/phishing', phishingRoute);
+app.use('/api/urlscanner', urlScannerRoute);
+app.use('/api/iplookup', ipLookupRoute);
 
-            "https://www.virustotal.com/api/v3/urls",
-
-            new URLSearchParams({
-                url: req.body.url
-            }),
-
-            {
-                headers: {
-                    "x-apikey": process.env.VIRUSTOTAL_API_KEY
-                }
-            }
-
-        );
-
-        res.json(response.data);
-
-    }
-
-    catch (error) {
-
-        res.status(500).json({
-            error: error.message
-        });
-
-    }
-
-});
-
-
-// ---------------- IP INFO ----------------
-
-app.get("/api/ip/:ip", async (req, res) => {
-
-    try {
-
-        const response = await axios.get(
-
-            `https://ipinfo.io/${req.params.ip}?token=${process.env.IPINFO_API_KEY}`
-
-        );
-
-        res.json(response.data);
-
-    }
-
-    catch (error) {
-
-        res.status(500).json({
-            error: error.message
-        });
-
-    }
-
-});
-
-
-app.listen(3000, () => {
-
-    console.log("Node server running on port 3000");
-
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -1,67 +1,52 @@
-import express from "express";
-import dotenv from "dotenv";
-
-dotenv.config();
+import express from 'express';
+import axios from 'axios';
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
-
+router.post('/', async (req, res) => {
+  try {
     const { message } = req.body;
 
-    try {
+    if (!message) {
+      return res.status(400).json({ error: 'Message is required' });
+    }
 
-        const response = await fetch(
-            "https://api.groq.com/openai/v1/chat/completions",
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization:
-                        `Bearer ${process.env.GROQ_API_KEY}`
-                },
-
-                body: JSON.stringify({
-
-                    model: "llama-3.3-70b-versatile",
-
-                    messages: [
-                        {
-                            role: "system",
-                            content:
-`You are a cybersecurity expert.
+    const response = await axios.post(
+      'https://api.groq.com/openai/v1/chat/completions',
+      {
+        model: 'llama-3.3-70b-versatile',
+        messages: [
+          {
+            role: 'system',
+            content: `You are a cybersecurity expert.
 
 Always reply EXACTLY in this format:
 
 Risk Level: Low Risk / Moderate Risk / High Risk
 Indicators: comma separated indicators
 Recommendation: short recommendation`
-                        },
+          },
+          {
+            role: 'user',
+            content: `Analyze this message for phishing:
 
-                        {
-                            role: "user",
-                            content: message
-                        }
-                    ]
-                })
-            }
-        );
+${message}`
+          }
+        ]
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
+        }
+      }
+    );
 
-        const data = await response.json();
-
-        res.json(data);
-
-    }
-
-    catch (error) {
-
-        res.status(500).json({
-            error: error.message
-        });
-
-    }
-
+    res.json(response.data);
+  } catch (error) {
+    console.error('Phishing API error:', error);
+    res.status(500).json({ error: error.message || 'Groq API returned an error' });
+  }
 });
 
 export default router;

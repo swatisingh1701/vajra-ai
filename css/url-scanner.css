@@ -346,3 +346,29 @@ body::after {
     background: rgba(239,68,68,0.12);
     color: #ef4444;
 }
+
+.back-btn{
+    position: fixed;
+    top: 30px;
+    left: 30px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.back-btn:hover{
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.15);
+}
