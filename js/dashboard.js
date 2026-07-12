@@ -204,9 +204,12 @@ function createChart(totalScans, threatsBlocked, safeActivities) {
 
 }
 
+
+
 const hamburgerBtn = document.getElementById("hamburgerBtn");
 const mobileSidebar = document.getElementById("mobileSidebar");
 const overlay = document.querySelector(".overlay");
+const menuIcon = document.getElementById("menuIcon");
 
 hamburgerBtn.addEventListener("click", () => {
 
@@ -214,29 +217,92 @@ hamburgerBtn.addEventListener("click", () => {
     overlay.classList.toggle("open");
     hamburgerBtn.classList.toggle("active");
 
+    if(mobileSidebar.classList.contains("open")){
+
+        menuIcon.classList.remove("fa-bars");
+        menuIcon.classList.add("fa-xmark");
+
+    }
+
+    else{
+
+        menuIcon.classList.remove("fa-xmark");
+        menuIcon.classList.add("fa-bars");
+
+    }
+
 });
 
-overlay.addEventListener("click", () => {
+overlay.addEventListener("click",()=>{
 
     mobileSidebar.classList.remove("open");
     overlay.classList.remove("open");
     hamburgerBtn.classList.remove("active");
 
+    menuIcon.classList.remove("fa-xmark");
+    menuIcon.classList.add("fa-bars");
+
 });
 
-const menuIcon = document.getElementById("menuIcon");
 
-hamburgerBtn.addEventListener("click", () => {
+// Search bar interactivity
 
-    mobileSidebar.classList.toggle("open");
-    overlay.classList.toggle("open");
+const searchBox = document.getElementById("searchBox");
 
-    if (mobileSidebar.classList.contains("open")) {
-        menuIcon.classList.remove("fa-bars");
-        menuIcon.classList.add("fa-xmark");
-    } else {
-        menuIcon.classList.remove("fa-xmark");
-        menuIcon.classList.add("fa-bars");
+const featureMap = {
+
+    dashboard:"dashboard.html",
+
+    phishing:"phishing-detector.html",
+    phishingdetector:"phishing-detector.html",
+
+    url:"url-scanner.html",
+    scanner:"url-scanner.html",
+
+    password:"password-checker.html",
+    analyzer:"password-checker.html",
+    checker:"password-checker.html",
+
+    generator:"password-generator.html",
+
+    ip:"ip-intelligence.html",
+    intelligence:"ip-intelligence.html",
+
+    medha:"medha.html",
+    ai:"medha.html",
+
+    history:"history.html",
+
+    settings:"settings.html"
+
+};
+
+searchBox.addEventListener("keydown",(e)=>{
+
+    if(e.key!=="Enter") return;
+
+    const value = searchBox.value
+    .trim()
+    .toLowerCase();
+
+    let found = false;
+
+for(const key in featureMap){
+
+    if(value.includes(key)){
+
+        window.location.href = featureMap[key];
+        found = true;
+        break;
+
+    }
+
+}
+
+    if(!found){
+
+        alert("No matching feature found.");
+
     }
 
 });

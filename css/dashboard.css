@@ -782,6 +782,42 @@ body{
         height: 38px;
         font-size: 1.05rem;
     }
+
+    .card{
+    min-height:100px;
+    padding:16px;
+}
+
+.card h3{
+    font-size:.9rem;
+    margin-bottom:12px;
+}
+
+.card p{
+    font-size:1.5rem;
+}
+
+.action-card{
+    min-height:100px;
+    padding:16px;
+}
+
+.action-card h3{
+    font-size:.95rem;
+}
+
+.action-card p{
+    font-size:.82rem;
+}
+
+.chart-box{
+    min-height:220px;
+}
+
+.chart-box canvas{
+    height:220px;
+}
+
 }
 
 /* ===== Mobile Navigation ===== */
@@ -796,6 +832,31 @@ body{
 
 @media (max-width:768px){
 
+  .top-bar{
+    justify-content:space-between;
+    align-items:center;
+}
+
+.top-bar input{
+    flex:1;
+    width:auto;
+    min-width:0;
+}
+
+.profile{
+    gap:10px;
+}
+
+#logoutBtn{
+    padding:10px 14px;
+    font-size:.8rem;
+}
+
+.avatar{
+    width:38px;
+    height:38px;
+}
+
     /* hide desktop sidebar */
     .sidebar{
         display:none;
@@ -808,7 +869,7 @@ body{
         justify-content:center;
     }
 
-    /* top bar row me hi rahe */
+    
     .top-bar{
         flex-direction:row;
     }
