@@ -471,16 +471,18 @@ footer {
 
 @media (max-width: 720px) {
   body {
-    padding: 16px;
+    padding: 10px;
   }
 
   .container {
-    gap: 16px;
-    min-height: calc(100vh - 32px);
+    display:block;
+    width:100%;
+    min-height:auto;
   }
 
   .left-section {
     padding-top: 0;
+    display:none;
   }
 
   .intro h2 {
@@ -488,14 +490,30 @@ footer {
     max-width: 14ch;
   }
 
-  .right-section {
-    padding: 24px 18px 18px;
-    border-radius: 24px;
+  .right-section{
+    width:100%;
+    min-height:100vh;
+    padding:24px;
+    border-radius:20px;
+  }
+
+  .right-section h3{
+    font-size:1.7rem;
+  }
+
+  .right-section > p{
+    font-size:.95rem;
+    margin-top:8px;
+  }
+
+  .tabs button{
+    height:46px;
+    font-size:.9rem;
   }
 
   #login-form {
-    padding: 20px;
-    border-radius: 24px;
+    padding:18px;
+    border-radius:18px;
   }
 
   .tabs {
@@ -506,7 +524,19 @@ footer {
   #login-form input,
   .login-btn,
   .google-btn {
-    height: 52px;
+    height:48px;
+    font-size:.95rem;
+  }
+
+  .google-btn img{
+    width:24px;
+    height:24px;
+  }
+
+  .security-note{
+    padding:16px;
+    font-size:.85rem;
+    border-radius:16px;
   }
 
   .feature {
@@ -520,5 +550,15 @@ footer {
 
   .shield img {
     max-width: 220px;
+  }
+
+  .right-section:hover,
+  #login-form:hover,
+  .feature:hover,
+  .security-note:hover,
+  .google-btn:hover,
+  .login-btn:hover{
+    transform:none;
+    box-shadow:none;
   }
 }
